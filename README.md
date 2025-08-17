@@ -13,9 +13,13 @@ Invalid Product - https://kkg32e0ajc.execute-api.us-east-1.amazonaws.com/prod/pr
 
 - `getProductsList` Lambda function - Returns all products (GET /products)
 - `getProductsById` Lambda function - Returns a specific product (GET /products/{productId})
+- `catalogBatchProcess` Lambda function - Processes products from SQS queue
 - API Gateway integration with CORS support
+- SQS queue for async product processing (`catalogItemsQueue`)
+- SNS topic for product creation notifications (`createProductTopic`)
+- Email notifications via SNS
 - TypeScript implementation
-- Mock product data
+- Video game mock data
 
 
 ## Prerequisites
@@ -55,6 +59,17 @@ You can test with these product IDs:
 - 7567ec4b-b10c-48c5-9345-fc73c48a80aa
 - 7567ec4b-b10c-48c5-9345-fc73c48a80a0
 - 7567ec4b-b10c-48c5-9345-fc73c48a80a2
+
+## SQS & SNS Features
+
+After deployment, you'll also get:
+
+- **SQS Queue URL** - For sending product data to be processed
+- **SNS Topic ARN** - For product creation notifications
+
+### Testing SQS Integration
+Run: `node test-sqs.js`
+
 
 ## Cleanup
 
